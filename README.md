@@ -36,11 +36,11 @@ any time. WebDAV sync keeps the same folder available on your other devices and 
 
 | Live editing | Split view | Preview only |
 | --- | --- | --- |
-| ![Live](docs/screenshots/live.png) | ![Split](docs/screenshots/split.png) | ![Preview](docs/screenshots/preview.png) |
+| <img src="docs/screenshots/live.png" alt="Live" width="220" /> | <img src="docs/screenshots/split.png" alt="Split" width="220" /> | <img src="docs/screenshots/preview.png" alt="Preview" width="220" /> |
 
 | Formatting menu | WebDAV sync |
 | --- | --- |
-| ![Formatting](docs/screenshots/formatting.png) | ![WebDAV](docs/screenshots/webdav.png) |
+| <img src="docs/screenshots/formatting.png" alt="Formatting" width="220" /> | <img src="docs/screenshots/webdav.png" alt="WebDAV" width="220" /> |
 
 ## Features
 
