@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MarkNote</string>
+
+    <!-- File list -->
+    <string name="list_more">Mehr</string>
+    <string name="list_new_file">Neue Datei</string>
+    <string name="list_import_file">Datei importieren</string>
+    <string name="list_sort_recent">Sortierung: zuletzt geändert</string>
+    <string name="list_sort_name">Sortierung: Dateiname</string>
+    <string name="list_search_hint">Dateinamen suchen…</string>
+    <string name="list_empty_no_files">Noch keine Dateien\nTippen Sie auf + zum Erstellen oder importieren Sie über das Menü</string>
+    <string name="list_empty_no_match">Keine passenden Dateien</string>
+    <string name="list_create_first">Markdown-Datei erstellen</string>
+
+    <!-- Dialogs and actions -->
+    <string name="dialog_new_title">Neue Datei</string>
+    <string name="dialog_rename_title">Umbenennen</string>
+    <string name="dialog_filename_hint">Dateiname (.md / .markdown / .txt unterstützt)</string>
+    <string name="dialog_create">Erstellen</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Abbrechen</string>
+    <string name="dialog_delete_title">Datei löschen</string>
+    <string name="dialog_delete_message">„%1$s“ löschen? Dies kann nicht rückgängig gemacht werden.</string>
+    <string name="dialog_delete">Löschen</string>
+    <string name="action_open">Öffnen</string>
+    <string name="action_rename">Umbenennen</string>
+    <string name="action_share">Teilen</string>
+    <string name="action_export">Exportieren</string>
+    <string name="action_delete">Löschen</string>
+    <string name="share_title">„%1$s“ teilen</string>
+
+    <string name="import_success">„%1$s“ importiert</string>
+    <string name="import_failed">Import fehlgeschlagen</string>
+    <string name="import_failed_detail">Import fehlgeschlagen: %1$s</string>
+    <string name="export_success">„%1$s“ exportiert</string>
+    <string name="export_failed">Export fehlgeschlagen: %1$s</string>
+
+    <string name="time_just_now">Gerade eben</string>
+    <string name="time_minutes_ago">Vor %1$d Min.</string>
+    <string name="time_hours_ago">Vor %1$d Std.</string>
+    <string name="time_yesterday">Gestern</string>
+    <string name="default_file_name">Ohne Titel</string>
+
+    <!-- Editor -->
+    <string name="editor_back">Zurück</string>
+    <string name="editor_edit_only">Nur bearbeiten</string>
+    <string name="editor_split">Geteilt</string>
+    <string name="editor_preview_only">Nur Vorschau</string>
+    <string name="editor_live_preview">Live-Vorschau</string>
+    <string name="editor_show_source">Quelltext anzeigen</string>
+    <string name="editor_show_preview">Nur Vorschau</string>
+    <string name="editor_save">Speichern</string>
+    <string name="save_saved">Gespeichert</string>
+    <string name="save_dirty">Nicht gespeichert · Auto-Speichern</string>
+    <string name="save_saving">Wird gespeichert…</string>
+    <string name="save_loading">Wird geladen…</string>
+    <string name="editor_loading">Editor wird geladen…</string>
+    <string name="image_imported">Bild eingefügt</string>
+    <string name="image_import_failed">Bildimport fehlgeschlagen</string>
+
+    <string name="toolbar_undo">Rückgängig</string>
+    <string name="toolbar_redo">Wiederholen</string>
+    <string name="toolbar_bold">Fett</string>
+    <string name="toolbar_italic">Kursiv</string>
+    <string name="toolbar_strikethrough">Durchgestrichen</string>
+    <string name="toolbar_quote">Zitat</string>
+    <string name="toolbar_bullet_list">Aufzählungsliste</string>
+    <string name="toolbar_ordered_list">Nummerierte Liste</string>
+    <string name="toolbar_task_list">Aufgabenliste</string>
+    <string name="toolbar_inline_code">Inline-Code</string>
+    <string name="toolbar_heading">Überschrift</string>
+    <string name="toolbar_code_block">Codeblock</string>
+    <string name="toolbar_link">Link</string>
+    <string name="toolbar_image">Bild</string>
+    <string name="toolbar_table">Tabelle</string>
+    <string name="toolbar_horizontal_rule">Horizontale Linie</string>
+    <string name="toolbar_more">Weitere Formatierung</string>
+
+    <!-- Slash command menu (triggered by /) -->
+    <string name="menu_heading_1">Überschrift 1</string>
+    <string name="menu_heading_2">Überschrift 2</string>
+    <string name="menu_heading_3">Überschrift 3</string>
+    <string name="slash_no_match">Keine passenden Befehle</string>
+
+    <string name="error_read_file">Datei kann nicht gelesen werden: %1$s</string>
+    <string name="error_save_file">Speichern fehlgeschlagen: %1$s</string>
+
+    <!-- Settings -->
+    <string name="menu_language">语言 / Sprache</string>
+    <string name="menu_sync">WebDAV-Synchronisierung</string>
+    <string name="language_title">语言 / Sprache</string>
+    <string name="language_system">System folgen</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_english">English</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- WebDAV -->
+    <string name="sync_title">WebDAV-Synchronisierung</string>
+    <string name="sync_server_url">Server-URL</string>
+    <string name="sync_server_url_hint">https://beispiel.de/dav</string>
+    <string name="sync_username">Benutzername</string>
+    <string name="sync_password">Passwort</string>
+    <string name="sync_password_show">Passwort anzeigen</string>
+    <string name="sync_password_hide">Passwort ausblenden</string>
+    <string name="sync_remote_path">Entfernter Ordner</string>
+    <string name="sync_remote_path_hint">MarkNote (leer = Stammverzeichnis)</string>
+    <string name="sync_https_hint">HTTPS verwenden; das Passwort wird auf diesem Gerät gespeichert</string>
+    <string name="sync_now">Jetzt synchronisieren</string>
+    <string name="sync_idle">Noch nicht synchronisiert</string>
+    <string name="sync_last_time">Letzte Synchronisierung: %1$s</string>
+    <string name="sync_progress">%1$s</string>
+    <string name="sync_done">Synchronisierung abgeschlossen: %1$d hochgeladen, %2$d heruntergeladen</string>
+    <string name="sync_failed">Synchronisierung fehlgeschlagen: %1$s</string>
+    <string name="sync_no_server">Bitte zuerst die Server-URL eingeben</string>
+    <string name="sync_invalid_url">Ungültige Server-URL: verwenden Sie eine vollständige https://-Adresse und fügen Sie Benutzername oder Passwort nicht in das URL-Feld ein</string>
+    <string name="sync_save">Einstellungen speichern</string>
+    <string name="sync_saved">Einstellungen gespeichert</string>
+    <string name="sync_auto">Beim Start automatisch synchronisieren</string>
+    <string name="sync_syncing">Wird synchronisiert…</string>
+    <string name="sync_again">Erneut synchronisieren</string>
+    <string name="sync_finish">Fertig</string>
+    <string name="sync_retry">Erneut versuchen</string>
+    <string name="sync_uploading">%1$s wird hochgeladen…</string>
+    <string name="sync_downloading">%1$s wird heruntergeladen…</string>
+    <string name="sync_connecting">Verbindung wird hergestellt…</string>
+    <string name="sync_mkdir_failed">Erstellen des entfernten Ordners fehlgeschlagen: %1$s</string>
+    <string name="sync_upload_failed">Hochladen %1$s: %2$s</string>
+    <string name="sync_download_failed">Herunterladen %1$s: %2$s</string>
+    <string name="sync_invalid_name">Ungültiger entfernter Dateiname: %1$s</string>
+    <string name="sync_config_saved">Synchronisierungseinstellungen gespeichert</string>
+</resources>

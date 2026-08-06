@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">墨记</string>
+
+    <!-- 列表页 -->
+    <string name="list_more">更多</string>
+    <string name="list_new_file">新建文件</string>
+    <string name="list_import_file">导入文件</string>
+    <string name="list_sort_recent">排序：最近修改</string>
+    <string name="list_sort_name">排序：文件名</string>
+    <string name="list_search_hint">搜索文件名…</string>
+    <string name="list_empty_no_files">还没有文件\n点击右下角 + 新建，或从菜单导入</string>
+    <string name="list_empty_no_match">没有匹配的文件</string>
+    <string name="list_create_first">新建 Markdown 文件</string>
+
+    <!-- 对话框与操作 -->
+    <string name="dialog_new_title">新建文件</string>
+    <string name="dialog_rename_title">重命名</string>
+    <string name="dialog_filename_hint">文件名（支持 .md / .markdown / .txt）</string>
+    <string name="dialog_create">创建</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_delete_title">删除文件</string>
+    <string name="dialog_delete_message">确定删除「%1$s」吗？此操作不可恢复。</string>
+    <string name="dialog_delete">删除</string>
+    <string name="action_open">打开</string>
+    <string name="action_rename">重命名</string>
+    <string name="action_share">分享</string>
+    <string name="action_export">导出</string>
+    <string name="action_delete">删除</string>
+    <string name="share_title">分享「%1$s」</string>
+
+    <string name="import_success">已导入「%1$s」</string>
+    <string name="import_failed">导入失败</string>
+    <string name="import_failed_detail">导入失败：%1$s</string>
+    <string name="export_success">已导出「%1$s」</string>
+    <string name="export_failed">导出失败：%1$s</string>
+
+    <string name="time_just_now">刚刚</string>
+    <string name="time_minutes_ago">%1$d 分钟前</string>
+    <string name="time_hours_ago">%1$d 小时前</string>
+    <string name="time_yesterday">昨天</string>
+    <string name="default_file_name">未命名</string>
+
+    <!-- 编辑器 -->
+    <string name="editor_back">返回</string>
+    <string name="editor_edit_only">仅编辑</string>
+    <string name="editor_split">分屏</string>
+    <string name="editor_preview_only">仅预览</string>
+    <string name="editor_live_preview">实时预览</string>
+    <string name="editor_show_source">显示源码</string>
+    <string name="editor_show_preview">只看预览</string>
+    <string name="editor_save">保存</string>
+    <string name="save_saved">已保存</string>
+    <string name="save_dirty">未保存 · 自动保存中</string>
+    <string name="save_saving">保存中…</string>
+    <string name="save_loading">加载中…</string>
+    <string name="editor_loading">正在加载编辑器…</string>
+    <string name="image_imported">图片已插入</string>
+    <string name="image_import_failed">图片导入失败</string>
+
+    <string name="toolbar_undo">撤销</string>
+    <string name="toolbar_redo">重做</string>
+    <string name="toolbar_bold">加粗</string>
+    <string name="toolbar_italic">斜体</string>
+    <string name="toolbar_strikethrough">删除线</string>
+    <string name="toolbar_quote">引用</string>
+    <string name="toolbar_bullet_list">无序列表</string>
+    <string name="toolbar_ordered_list">有序列表</string>
+    <string name="toolbar_task_list">任务列表</string>
+    <string name="toolbar_inline_code">行内代码</string>
+    <string name="toolbar_heading">标题</string>
+    <string name="toolbar_code_block">代码块</string>
+    <string name="toolbar_link">链接</string>
+    <string name="toolbar_image">图片</string>
+    <string name="toolbar_table">表格</string>
+    <string name="toolbar_horizontal_rule">分割线</string>
+    <string name="toolbar_more">更多格式</string>
+
+    <!-- 快捷菜单（/ 触发） -->
+    <string name="menu_heading_1">标题 1</string>
+    <string name="menu_heading_2">标题 2</string>
+    <string name="menu_heading_3">标题 3</string>
+    <string name="slash_no_match">没有匹配的指令</string>
+
+    <string name="error_read_file">无法读取文件：%1$s</string>
+    <string name="error_save_file">保存失败：%1$s</string>
+
+    <!-- 设置 -->
+    <string name="menu_language">语言 / Language</string>
+    <string name="menu_sync">WebDAV 同步</string>
+    <string name="language_title">语言 / Language</string>
+    <string name="language_system">跟随系统</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_english">English</string>
+    <string name="language_french">法语</string>
+    <string name="language_german">德语</string>
+    <string name="language_japanese">日语</string>
+    <string name="language_spanish">西班牙语</string>
+
+    <!-- WebDAV -->
+    <string name="sync_title">WebDAV 同步</string>
+    <string name="sync_server_url">服务器地址</string>
+    <string name="sync_server_url_hint">https://example.com/dav</string>
+    <string name="sync_username">用户名</string>
+    <string name="sync_password">密码</string>
+    <string name="sync_password_show">显示密码</string>
+    <string name="sync_password_hide">隐藏密码</string>
+    <string name="sync_remote_path">远程目录</string>
+    <string name="sync_remote_path_hint">MarkNote（留空使用根目录）</string>
+    <string name="sync_https_hint">请使用 HTTPS 地址，密码保存在本机</string>
+    <string name="sync_now">立即同步</string>
+    <string name="sync_idle">尚未同步</string>
+    <string name="sync_last_time">上次同步：%1$s</string>
+    <string name="sync_progress">%1$s</string>
+    <string name="sync_done">同步完成：上传 %1$d 个，下载 %2$d 个</string>
+    <string name="sync_failed">同步失败：%1$s</string>
+    <string name="sync_no_server">请先填写服务器地址</string>
+    <string name="sync_invalid_url">服务器地址格式不正确：请填写完整的 https:// 地址，不要把用户名或密码粘贴进地址栏</string>
+    <string name="sync_save">保存设置</string>
+    <string name="sync_saved">设置已保存</string>
+    <string name="sync_auto">启动时自动同步</string>
+    <string name="sync_syncing">同步中…</string>
+    <string name="sync_again">再次同步</string>
+    <string name="sync_finish">完成</string>
+    <string name="sync_retry">重试</string>
+    <string name="sync_uploading">正在上传 %1$s…</string>
+    <string name="sync_downloading">正在下载 %1$s…</string>
+    <string name="sync_connecting">正在连接…</string>
+    <string name="sync_mkdir_failed">创建远程目录失败：%1$s</string>
+    <string name="sync_upload_failed">上传 %1$s：%2$s</string>
+    <string name="sync_download_failed">下载 %1$s：%2$s</string>
+    <string name="sync_invalid_name">远程文件名不合法：%1$s</string>
+    <string name="sync_config_saved">同步设置已保存</string>
+</resources>

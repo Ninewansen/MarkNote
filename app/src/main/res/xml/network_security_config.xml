@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 个人 WebDAV 服务器常部署在家庭局域网（http），因此允许明文连接；
+     应用内已提示优先使用 HTTPS。仅影响应用自身发出的网络请求。 -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MarkNote</string>
+
+    <!-- File list -->
+    <string name="list_more">その他</string>
+    <string name="list_new_file">新規ファイル</string>
+    <string name="list_import_file">ファイルをインポート</string>
+    <string name="list_sort_recent">並び替え: 更新日時</string>
+    <string name="list_sort_name">並び替え: ファイル名</string>
+    <string name="list_search_hint">ファイル名を検索…</string>
+    <string name="list_empty_no_files">ファイルがありません\n+ をタップして作成するか、メニューからインポートしてください</string>
+    <string name="list_empty_no_match">一致するファイルがありません</string>
+    <string name="list_create_first">Markdown ファイルを作成</string>
+
+    <!-- Dialogs and actions -->
+    <string name="dialog_new_title">新規ファイル</string>
+    <string name="dialog_rename_title">名前を変更</string>
+    <string name="dialog_filename_hint">ファイル名 (.md / .markdown / .txt 対応)</string>
+    <string name="dialog_create">作成</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">キャンセル</string>
+    <string name="dialog_delete_title">ファイルを削除</string>
+    <string name="dialog_delete_message">「%1$s」を削除しますか？この操作は元に戻せません。</string>
+    <string name="dialog_delete">削除</string>
+    <string name="action_open">開く</string>
+    <string name="action_rename">名前を変更</string>
+    <string name="action_share">共有</string>
+    <string name="action_export">書き出し</string>
+    <string name="action_delete">削除</string>
+    <string name="share_title">「%1$s」を共有</string>
+
+    <string name="import_success">「%1$s」をインポートしました</string>
+    <string name="import_failed">インポートに失敗しました</string>
+    <string name="import_failed_detail">インポートに失敗しました: %1$s</string>
+    <string name="export_success">「%1$s」を書き出しました</string>
+    <string name="export_failed">書き出しに失敗しました: %1$s</string>
+
+    <string name="time_just_now">たった今</string>
+    <string name="time_minutes_ago">%1$d 分前</string>
+    <string name="time_hours_ago">%1$d 時間前</string>
+    <string name="time_yesterday">昨日</string>
+    <string name="default_file_name">無題</string>
+
+    <!-- Editor -->
+    <string name="editor_back">戻る</string>
+    <string name="editor_edit_only">編集のみ</string>
+    <string name="editor_split">分割</string>
+    <string name="editor_preview_only">プレビューのみ</string>
+    <string name="editor_live_preview">ライブプレビュー</string>
+    <string name="editor_show_source">ソースを表示</string>
+    <string name="editor_show_preview">プレビューのみ</string>
+    <string name="editor_save">保存</string>
+    <string name="save_saved">保存済み</string>
+    <string name="save_dirty">未保存 · 自動保存中</string>
+    <string name="save_saving">保存中…</string>
+    <string name="save_loading">読み込み中…</string>
+    <string name="editor_loading">エディタを読み込み中…</string>
+    <string name="image_imported">画像を挿入しました</string>
+    <string name="image_import_failed">画像のインポートに失敗しました</string>
+
+    <string name="toolbar_undo">元に戻す</string>
+    <string name="toolbar_redo">やり直し</string>
+    <string name="toolbar_bold">太字</string>
+    <string name="toolbar_italic">斜体</string>
+    <string name="toolbar_strikethrough">取り消し線</string>
+    <string name="toolbar_quote">引用</string>
+    <string name="toolbar_bullet_list">箇条書きリスト</string>
+    <string name="toolbar_ordered_list">番号付きリスト</string>
+    <string name="toolbar_task_list">タスクリスト</string>
+    <string name="toolbar_inline_code">インラインコード</string>
+    <string name="toolbar_heading">見出し</string>
+    <string name="toolbar_code_block">コードブロック</string>
+    <string name="toolbar_link">リンク</string>
+    <string name="toolbar_image">画像</string>
+    <string name="toolbar_table">表</string>
+    <string name="toolbar_horizontal_rule">水平線</string>
+    <string name="toolbar_more">その他の書式</string>
+
+    <!-- Slash command menu (triggered by /) -->
+    <string name="menu_heading_1">見出し 1</string>
+    <string name="menu_heading_2">見出し 2</string>
+    <string name="menu_heading_3">見出し 3</string>
+    <string name="slash_no_match">一致するコマンドがありません</string>
+
+    <string name="error_read_file">ファイルを読み込めません: %1$s</string>
+    <string name="error_save_file">保存に失敗しました: %1$s</string>
+
+    <!-- Settings -->
+    <string name="menu_language">语言 / 言語</string>
+    <string name="menu_sync">WebDAV 同期</string>
+    <string name="language_title">语言 / 言語</string>
+    <string name="language_system">システムに従う</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_english">English</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_spanish">Español</string>
+
+    <!-- WebDAV -->
+    <string name="sync_title">WebDAV 同期</string>
+    <string name="sync_server_url">サーバー URL</string>
+    <string name="sync_server_url_hint">https://example.com/dav</string>
+    <string name="sync_username">ユーザー名</string>
+    <string name="sync_password">パスワード</string>
+    <string name="sync_password_show">パスワードを表示</string>
+    <string name="sync_password_hide">パスワードを隠す</string>
+    <string name="sync_remote_path">リモートフォルダ</string>
+    <string name="sync_remote_path_hint">MarkNote（空欄はルート）</string>
+    <string name="sync_https_hint">HTTPS を使用してください。パスワードはこの端末に保存されます</string>
+    <string name="sync_now">今すぐ同期</string>
+    <string name="sync_idle">未同期</string>
+    <string name="sync_last_time">最終同期: %1$s</string>
+    <string name="sync_progress">%1$s</string>
+    <string name="sync_done">同期完了: %1$d 件アップロード、%2$d 件ダウンロード</string>
+    <string name="sync_failed">同期に失敗しました: %1$s</string>
+    <string name="sync_no_server">先にサーバー URL を入力してください</string>
+    <string name="sync_invalid_url">サーバー URL が無効です。完全な https:// アドレスを入力し、URL欄にユーザー名やパスワードを貼り付けないでください</string>
+    <string name="sync_save">設定を保存</string>
+    <string name="sync_saved">設定を保存しました</string>
+    <string name="sync_auto">起動時に自動同期</string>
+    <string name="sync_syncing">同期中…</string>
+    <string name="sync_again">もう一度同期</string>
+    <string name="sync_finish">完了</string>
+    <string name="sync_retry">再試行</string>
+    <string name="sync_uploading">%1$s をアップロード中…</string>
+    <string name="sync_downloading">%1$s をダウンロード中…</string>
+    <string name="sync_connecting">接続中…</string>
+    <string name="sync_mkdir_failed">リモートフォルダの作成に失敗しました: %1$s</string>
+    <string name="sync_upload_failed">アップロード %1$s: %2$s</string>
+    <string name="sync_download_failed">ダウンロード %1$s: %2$s</string>
+    <string name="sync_invalid_name">リモートのファイル名が無効です: %1$s</string>
+    <string name="sync_config_saved">同期設定を保存しました</string>
+</resources>

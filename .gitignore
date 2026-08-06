@@ -1,0 +1,24 @@
+# Gradle / Android
+.gradle/
+.kotlin/
+build/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# IDE
+.idea/
+*.iml
+
+# Local config (SDK path, signing secrets)
+local.properties
+keystore.properties
+keystore/
+
+# APK artifacts (keep only the released one under releases/)
+*.apk
+!releases/*.apk
+
+# macOS
+.DS_Store

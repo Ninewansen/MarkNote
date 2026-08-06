@@ -1,0 +1,10 @@
+{
+  "languages": [
+    {
+      "grammar": "textmate/markdown/syntaxes/markdown.tmLanguage.json",
+      "name": "markdown",
+      "scopeName": "text.html.markdown",
+      "languageConfiguration": "textmate/markdown/language-configuration.json"
+    }
+  ]
+}

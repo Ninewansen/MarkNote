@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    html.dark body {
+      background: #1e1e1e;
+    }
+    #vditor {
+      height: 100%;
+    }
+    .vditor {
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent;
+    }
+    /* Notion 风格正文排版 */
+    .vditor-wysiwyg .vditor-reset {
+      font-family: -apple-system, "SF Pro Text", "PingFang SC", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      padding: 16px 20px 48px !important;
+      color: #37352f;
+    }
+    html.dark .vditor-wysiwyg .vditor-reset {
+      color: #e8e6e3;
+    }
+    .vditor-reset h1 {
+      font-size: 1.75em;
+      font-weight: 700;
+      margin: 0.7em 0 0.4em;
+      letter-spacing: -0.01em;
+    }
+    .vditor-reset h2 {
+      font-size: 1.4em;
+      font-weight: 650;
+      margin: 0.65em 0 0.35em;
+      letter-spacing: -0.01em;
+    }
+    .vditor-reset h3 {
+      font-size: 1.18em;
+      font-weight: 600;
+      margin: 0.6em 0 0.3em;
+    }
+    .vditor-reset p {
+      margin: 0.4em 0;
+    }
+    .vditor-reset blockquote {
+      margin: 0.5em 0;
+      padding: 2px 0 2px 14px;
+      border-left: 3px solid rgba(120, 120, 120, 0.35);
+      color: rgba(55, 53, 47, 0.75);
+    }
+    html.dark .vditor-reset blockquote {
+      color: rgba(232, 230, 227, 0.72);
+    }
+    .vditor-reset pre {
+      border-radius: 10px;
+      background: rgba(128, 128, 128, 0.08);
+      padding: 12px 14px;
+      margin: 0.6em 0;
+      font-size: 0.92em;
+      line-height: 1.55;
+    }
+    html.dark .vditor-reset pre {
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .vditor-wysiwyg table {
+      width: 100%;
+      font-size: 0.94em;
+      margin: 0.6em 0;
+      border-collapse: collapse;
+    }
+    .vditor-wysiwyg th, .vditor-wysiwyg td {
+      padding: 6px 10px;
+      border: 1px solid rgba(120, 120, 120, 0.25);
+    }
+    .vditor-wysiwyg ul, .vditor-wysiwyg ol {
+      padding-left: 1.4em;
+    }
+    .vditor-wysiwyg li {
+      margin: 0.2em 0;
+    }
+    .vditor-wysiwyg hr {
+      border: 0;
+      border-top: 1px solid rgba(120, 120, 120, 0.3);
+      margin: 1em 0;
+    }
+    /* 代码块语言输入条 */
+    .vditor-wysiwyg__block .vditor-wysiwyg__preview,
+    .vditor-wysiwyg__block pre {
+      font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    /* Notion 风格 / 菜单 */
+    .marknote-slash {
+      position: fixed;
+      z-index: 1000;
+      width: 264px;
+      max-height: 330px;
+      overflow-y: auto;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 14px;
+      box-shadow: 0 12px 38px rgba(0, 0, 0, 0.18);
+      padding: 6px;
+      box-sizing: border-box;
+    }
+    html.dark .marknote-slash {
+      background: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 38px rgba(0, 0, 0, 0.45);
+    }
+    .marknote-slash__item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 8px 10px;
+      border-radius: 9px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .marknote-slash__item--active {
+      background: rgba(80, 120, 255, 0.11);
+    }
+    html.dark .marknote-slash__item--active {
+      background: rgba(110, 150, 255, 0.18);
+    }
+    .marknote-slash__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(120, 120, 120, 0.12);
+      color: #4a7bff;
+      font-weight: 600;
+      font-size: 14px;
+      flex: none;
+    }
+    html.dark .marknote-slash__icon {
+      background: rgba(255, 255, 255, 0.1);
+      color: #7ba3ff;
+    }
+    .marknote-slash__label {
+      font-size: 14.5px;
+      color: #37352f;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    html.dark .marknote-slash__label {
+      color: #e8e6e3;
+    }
+    .marknote-slash__empty {
+      padding: 16px 12px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(120, 120, 120, 0.9);
+    }
+
+    /* 隐藏 Vditor 内置的元素属性小面板（图片 URL/替代文本/标题、链接等），
+       它在手机上会显示成 “id《alt+eng》” 之类的奇怪小标签或空白输入框，
+       格式功能已由应用自己的工具栏和 / 菜单提供。 */
+    .vditor-wysiwyg > .vditor-panel[data-top] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="vditor"></div>
+  <div id="marknote-slash" class="marknote-slash" style="display:none"></div>
+
+  <script>
+    var LANG = 'en_US';
+    try {
+      if (Android && Android.getLanguage) {
+        var l = Android.getLanguage();
+        if (l === 'zh' || l === 'zh_CN') LANG = 'zh_CN';
+        else if (l === 'fr' || l === 'fr_FR') LANG = 'fr_FR';
+        else if (l === 'de' || l === 'de_DE') LANG = 'de_DE';
+        else if (l === 'ja' || l === 'ja_JP') LANG = 'ja_JP';
+        else if (l === 'es' || l === 'es_ES') LANG = 'es_ES';
+        else LANG = 'en_US';
+      }
+    } catch (e) {}
+
+    // Android WebView 在首次布局前加载页面时，html/body 的 height:100% 会被解析成 0，
+    // 之后即使 WebView 尺寸恢复正常也不会自动更新，导致编辑器只剩顶部一小条、其余白屏。
+    // 这里强制用视口像素高度重建布局，并监听尺寸变化（含软键盘弹出/收起、模式切换）。
+    function markNoteFixHeight() {
+      var h = window.innerHeight;
+      if (!h || h <= 0) return;
+      var hpx = h + 'px';
+      document.documentElement.style.height = hpx;
+      document.body.style.height = hpx;
+      var host = document.getElementById('vditor');
+      if (host) host.style.height = hpx;
+    }
+    window.__markNoteFixHeight = markNoteFixHeight;
+    window.addEventListener('resize', markNoteFixHeight);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', markNoteFixHeight);
+    }
+    document.addEventListener('DOMContentLoaded', markNoteFixHeight);
+    window.addEventListener('load', markNoteFixHeight);
+  </script>
+  <script src="i18n/zh_CN.js"></script>
+  <script>var I18N_ZH = window.VditorI18n;</script>
+  <script src="i18n/en_US.js"></script>
+  <script>var I18N_EN = window.VditorI18n;</script>
+  <script src="i18n/fr_FR.js"></script>
+  <script>var I18N_FR = window.VditorI18n;</script>
+  <script src="i18n/de_DE.js"></script>
+  <script>var I18N_DE = window.VditorI18n;</script>
+  <script src="i18n/ja_JP.js"></script>
+  <script>var I18N_JA = window.VditorI18n;</script>
+  <script src="i18n/es_ES.js"></script>
+  <script>var I18N_ES = window.VditorI18n;</script>
+  <script>
+    window.VditorI18n = {
+      'zh_CN': I18N_ZH,
+      'en_US': I18N_EN,
+      'fr_FR': I18N_FR,
+      'de_DE': I18N_DE,
+      'ja_JP': I18N_JA,
+      'es_ES': I18N_ES
+    }[LANG] || I18N_EN;
+  </script>
+  <script src="index.min.js"></script>
+
+  <script>
+    var vditor;
+    var ready = false;
+    var pendingDark = false;
+
+    // ---------- 界面文案 / Notion 式 / 命令菜单 ----------
+
+    var UI = {
+      'zh_CN': {
+        placeholder: '输入 / 插入内容，或直接输入文字',
+        noMatch: '没有匹配的指令'
+      },
+      'en_US': {
+        placeholder: 'Type / to insert blocks, or write freely',
+        noMatch: 'No matching commands'
+      },
+      'fr_FR': {
+        placeholder: 'Tapez / pour insérer des blocs, ou écrivez librement',
+        noMatch: 'Aucune commande correspondante'
+      },
+      'de_DE': {
+        placeholder: 'Drücken Sie / zum Einfügen von Blöcken oder schreiben Sie frei',
+        noMatch: 'Keine passenden Befehle'
+      },
+      'ja_JP': {
+        placeholder: '/ でブロックを挿入するか、そのまま入力してください',
+        noMatch: '一致するコマンドがありません'
+      },
+      'es_ES': {
+        placeholder: 'Escribe / para insertar bloques, o escribe libremente',
+        noMatch: 'No hay comandos coincidentes'
+      }
+    }[LANG] || {};
+
+    var SLASH_BY_LANG = {
+      'zh_CN': [
+        { id: 'h1', label: '标题 1', keywords: 'h1 heading 标题', icon: 'H1' },
+        { id: 'h2', label: '标题 2', keywords: 'h2 标题', icon: 'H2' },
+        { id: 'h3', label: '标题 3', keywords: 'h3 标题', icon: 'H3' },
+        { id: 'bold', label: '加粗', keywords: 'bold 加粗 b', icon: 'B' },
+        { id: 'italic', label: '斜体', keywords: 'italic 斜体 i', icon: 'I' },
+        { id: 'strikethrough', label: '删除线', keywords: 'strikethrough 删除线 del', icon: 'S̶' },
+        { id: 'code', label: '行内代码', keywords: 'code 行内代码 代码', icon: '</>' },
+        { id: 'codeblock', label: '代码块', keywords: 'codeblock 代码块 fence', icon: '{}' },
+        { id: 'quote', label: '引用', keywords: 'quote 引用', icon: '❝' },
+        { id: 'bullet', label: '无序列表', keywords: 'bullet list 无序 列表', icon: '•' },
+        { id: 'ordered', label: '有序列表', keywords: 'ordered numbered 有序', icon: '1.' },
+        { id: 'task', label: '任务列表', keywords: 'task todo 任务', icon: '☑' },
+        { id: 'link', label: '链接', keywords: 'link 链接', icon: '🔗' },
+        { id: 'image', label: '图片', keywords: 'image 图片 img', icon: '🖼' },
+        { id: 'table', label: '表格', keywords: 'table 表格', icon: '▦' },
+        { id: 'hr', label: '分割线', keywords: 'hr rule 分割线', icon: '—' }
+      ],
+      'en_US': [
+        { id: 'h1', label: 'Heading 1', keywords: 'h1 heading 标题', icon: 'H1' },
+        { id: 'h2', label: 'Heading 2', keywords: 'h2 标题', icon: 'H2' },
+        { id: 'h3', label: 'Heading 3', keywords: 'h3 标题', icon: 'H3' },
+        { id: 'bold', label: 'Bold', keywords: 'bold 加粗 b', icon: 'B' },
+        { id: 'italic', label: 'Italic', keywords: 'italic 斜体 i', icon: 'I' },
+        { id: 'strikethrough', label: 'Strikethrough', keywords: 'strikethrough 删除线 del', icon: 'S̶' },
+        { id: 'code', label: 'Inline code', keywords: 'code 行内代码 代码', icon: '</>' },
+        { id: 'codeblock', label: 'Code block', keywords: 'codeblock 代码块 fence', icon: '{}' },
+        { id: 'quote', label: 'Quote', keywords: 'quote 引用', icon: '❝' },
+        { id: 'bullet', label: 'Bullet list', keywords: 'bullet list 无序 列表', icon: '•' },
+        { id: 'ordered', label: 'Numbered list', keywords: 'ordered numbered 有序', icon: '1.' },
+        { id: 'task', label: 'Task list', keywords: 'task todo 任务', icon: '☑' },
+        { id: 'link', label: 'Link', keywords: 'link 链接', icon: '🔗' },
+        { id: 'image', label: 'Image', keywords: 'image 图片 img', icon: '🖼' },
+        { id: 'table', label: 'Table', keywords: 'table 表格', icon: '▦' },
+        { id: 'hr', label: 'Divider', keywords: 'hr rule divider line 分割线', icon: '—' }
+      ],
+      'fr_FR': [
+        { id: 'h1', label: 'Titre 1', keywords: 'h1 heading titre 标题', icon: 'H1' },
+        { id: 'h2', label: 'Titre 2', keywords: 'h2 titre 标题', icon: 'H2' },
+        { id: 'h3', label: 'Titre 3', keywords: 'h3 titre 标题', icon: 'H3' },
+        { id: 'bold', label: 'Gras', keywords: 'bold gras b 加粗', icon: 'B' },
+        { id: 'italic', label: 'Italique', keywords: 'italic italique i 斜体', icon: 'I' },
+        { id: 'strikethrough', label: 'Barré', keywords: 'strikethrough barré del 删除线', icon: 'S̶' },
+        { id: 'code', label: 'Code en ligne', keywords: 'code inline 行内代码', icon: '</>' },
+        { id: 'codeblock', label: 'Bloc de code', keywords: 'codeblock bloc code fence 代码块', icon: '{}' },
+        { id: 'quote', label: 'Citation', keywords: 'quote citation 引用', icon: '❝' },
+        { id: 'bullet', label: 'Liste à puces', keywords: 'bullet list liste puces 无序 列表', icon: '•' },
+        { id: 'ordered', label: 'Liste numérotée', keywords: 'ordered numbered numérotée 有序', icon: '1.' },
+        { id: 'task', label: 'Liste de tâches', keywords: 'task todo tâches 任务', icon: '☑' },
+        { id: 'link', label: 'Lien', keywords: 'link lien 链接', icon: '🔗' },
+        { id: 'image', label: 'Image', keywords: 'image img 图片', icon: '🖼' },
+        { id: 'table', label: 'Tableau', keywords: 'table tableau 表格', icon: '▦' },
+        { id: 'hr', label: 'Ligne de séparation', keywords: 'hr rule divider ligne 分割线', icon: '—' }
+      ],
+      'de_DE': [
+        { id: 'h1', label: 'Überschrift 1', keywords: 'h1 heading überschrift 标题', icon: 'H1' },
+        { id: 'h2', label: 'Überschrift 2', keywords: 'h2 überschrift 标题', icon: 'H2' },
+        { id: 'h3', label: 'Überschrift 3', keywords: 'h3 überschrift 标题', icon: 'H3' },
+        { id: 'bold', label: 'Fett', keywords: 'bold fett b 加粗', icon: 'B' },
+        { id: 'italic', label: 'Kursiv', keywords: 'italic kursiv i 斜体', icon: 'I' },
+        { id: 'strikethrough', label: 'Durchgestrichen', keywords: 'strikethrough durchgestrichen del 删除线', icon: 'S̶' },
+        { id: 'code', label: 'Inline-Code', keywords: 'code inline 行内代码', icon: '</>' },
+        { id: 'codeblock', label: 'Codeblock', keywords: 'codeblock code block fence 代码块', icon: '{}' },
+        { id: 'quote', label: 'Zitat', keywords: 'quote zitat 引用', icon: '❝' },
+        { id: 'bullet', label: 'Aufzählungsliste', keywords: 'bullet list aufzählung 无序 列表', icon: '•' },
+        { id: 'ordered', label: 'Nummerierte Liste', keywords: 'ordered numbered nummeriert 有序', icon: '1.' },
+        { id: 'task', label: 'Aufgabenliste', keywords: 'task todo aufgaben 任务', icon: '☑' },
+        { id: 'link', label: 'Link', keywords: 'link 链接', icon: '🔗' },
+        { id: 'image', label: 'Bild', keywords: 'image bild img 图片', icon: '🖼' },
+        { id: 'table', label: 'Tabelle', keywords: 'table tabelle 表格', icon: '▦' },
+        { id: 'hr', label: 'Trennlinie', keywords: 'hr rule divider linie 分割线', icon: '—' }
+      ],
+      'ja_JP': [
+        { id: 'h1', label: '見出し 1', keywords: 'h1 heading 見出し 标题', icon: 'H1' },
+        { id: 'h2', label: '見出し 2', keywords: 'h2 見出し 标题', icon: 'H2' },
+        { id: 'h3', label: '見出し 3', keywords: 'h3 見出し 标题', icon: 'H3' },
+        { id: 'bold', label: '太字', keywords: 'bold 太字 b 加粗', icon: 'B' },
+        { id: 'italic', label: '斜体', keywords: 'italic 斜体 i', icon: 'I' },
+        { id: 'strikethrough', label: '取り消し線', keywords: 'strikethrough 取り消し線 del 删除线', icon: 'S̶' },
+        { id: 'code', label: 'インラインコード', keywords: 'code inline 行内代码', icon: '</>' },
+        { id: 'codeblock', label: 'コードブロック', keywords: 'codeblock code コード fence 代码块', icon: '{}' },
+        { id: 'quote', label: '引用', keywords: 'quote 引用', icon: '❝' },
+        { id: 'bullet', label: '箇条書きリスト', keywords: 'bullet list 箇条書き 无序 列表', icon: '•' },
+        { id: 'ordered', label: '番号付きリスト', keywords: 'ordered numbered 番号 有序', icon: '1.' },
+        { id: 'task', label: 'タスクリスト', keywords: 'task todo タスク 任务', icon: '☑' },
+        { id: 'link', label: 'リンク', keywords: 'link リンク 链接', icon: '🔗' },
+        { id: 'image', label: '画像', keywords: 'image img 画像 图片', icon: '🖼' },
+        { id: 'table', label: '表', keywords: 'table 表 表格', icon: '▦' },
+        { id: 'hr', label: '区切り線', keywords: 'hr rule divider 区切り 分割线', icon: '—' }
+      ],
+      'es_ES': [
+        { id: 'h1', label: 'Encabezado 1', keywords: 'h1 heading encabezado 标题', icon: 'H1' },
+        { id: 'h2', label: 'Encabezado 2', keywords: 'h2 encabezado 标题', icon: 'H2' },
+        { id: 'h3', label: 'Encabezado 3', keywords: 'h3 encabezado 标题', icon: 'H3' },
+        { id: 'bold', label: 'Negrita', keywords: 'bold negrita b 加粗', icon: 'B' },
+        { id: 'italic', label: 'Cursiva', keywords: 'italic cursiva i 斜体', icon: 'I' },
+        { id: 'strikethrough', label: 'Tachado', keywords: 'strikethrough tachado del 删除线', icon: 'S̶' },
+        { id: 'code', label: 'Código en línea', keywords: 'code inline 行内代码', icon: '</>' },
+        { id: 'codeblock', label: 'Bloque de código', keywords: 'codeblock código fence 代码块', icon: '{}' },
+        { id: 'quote', label: 'Cita', keywords: 'quote cita 引用', icon: '❝' },
+        { id: 'bullet', label: 'Lista con viñetas', keywords: 'bullet list viñetas 无序 列表', icon: '•' },
+        { id: 'ordered', label: 'Lista numerada', keywords: 'ordered numbered numerada 有序', icon: '1.' },
+        { id: 'task', label: 'Lista de tareas', keywords: 'task todo tareas 任务', icon: '☑' },
+        { id: 'link', label: 'Enlace', keywords: 'link enlace 链接', icon: '🔗' },
+        { id: 'image', label: 'Imagen', keywords: 'image img imagen 图片', icon: '🖼' },
+        { id: 'table', label: 'Tabla', keywords: 'table tabla 表格', icon: '▦' },
+        { id: 'hr', label: 'Línea divisoria', keywords: 'hr rule divider línea 分割线', icon: '—' }
+      ]
+    };
+    var SLASH_ITEMS = SLASH_BY_LANG[LANG] || SLASH_BY_LANG['en_US'];
+
+    function slashAction(id) {
+      switch (id) {
+        case 'h1': return function () { markNoteHeading(1); };
+        case 'h2': return function () { markNoteHeading(2); };
+        case 'h3': return function () { markNoteHeading(3); };
+        case 'bold': return function () { markNoteExec('bold'); };
+        case 'italic': return function () { markNoteExec('italic'); };
+        case 'strikethrough': return function () { markNoteExec('strike'); };
+        case 'code': return function () { markNoteExec('inline-code'); };
+        case 'codeblock': return function () { markNoteExec('code'); };
+        case 'quote': return function () { markNoteExec('quote'); };
+        case 'bullet': return function () { markNoteExec('list'); };
+        case 'ordered': return function () { markNoteExec('ordered-list'); };
+        case 'task': return function () { markNoteExec('check'); };
+        case 'link': return function () { markNoteExec('link'); };
+        case 'image': return function () {
+          try { Android.pickImage(); } catch (e) { markNoteInsert('![](https://)'); }
+        };
+        case 'table': return function () { markNoteExec('table'); };
+        case 'hr': return function () { markNoteExec('line'); };
+        default: return function () {};
+      }
+    }
+
+    var slashMenu = document.getElementById('marknote-slash');
+    var slashState = null;   // { block, items, sel }
+    var slashTimer = 0;
+    var slashBound = false;
+
+    function getSlashBlock(node) {
+      var el = node && node.nodeType === 1 ? node : (node ? node.parentElement : null);
+      if (!el) return null;
+      return el.closest('[data-block="0"]');
+    }
+
+    /** 计算当前是否处于行首 /query 状态；是则返回块与查询词 */
+    function computeSlash() {
+      var sel = window.getSelection();
+      if (!sel || sel.rangeCount === 0) return null;
+      var range = sel.getRangeAt(0);
+      if (!range.collapsed) return null;
+      var block = getSlashBlock(range.startContainer);
+      if (!block) return null;
+      var before = document.createRange();
+      before.selectNodeContents(block);
+      before.setEnd(range.startContainer, range.startOffset);
+      var text = before.toString();
+      var m = /^\/([\p{L}\p{N}]*)$/u.exec(text);
+      if (!m) return null;
+      var rect = range.getBoundingClientRect();
+      return { block: block, query: m[1], rect: rect };
+    }
+
+    function renderSlash(state) {
+      var q = state.query.toLowerCase();
+      var items = SLASH_ITEMS.filter(function (c) {
+        return !q || c.keywords.toLowerCase().indexOf(q) > -1 || c.id.toLowerCase().indexOf(q) > -1;
+      });
+      state.items = items;
+      state.sel = 0;
+      if (items.length === 0) {
+        slashMenu.innerHTML = '<div class="marknote-slash__empty">' +
+          UI.noMatch + '</div>';
+        slashMenu.style.display = 'block';
+      } else {
+        var html = '';
+        items.forEach(function (c, i) {
+          html += '<div class="marknote-slash__item' + (i === 0 ? ' marknote-slash__item--active' : '') +
+            '" data-id="' + c.id + '">' +
+            '<span class="marknote-slash__icon">' + c.icon + '</span>' +
+            '<span class="marknote-slash__label">' + c.label + '</span></div>';
+        });
+        slashMenu.innerHTML = html;
+        slashMenu.style.display = 'block';
+        slashMenu.querySelectorAll('.marknote-slash__item').forEach(function (el, i) {
+          el.addEventListener('pointerdown', function (ev) {
+            ev.preventDefault();
+            runSlashCommand(items[i]);
+          });
+        });
+      }
+      positionSlash(state.rect);
+    }
+
+    function positionSlash(rect) {
+      if (!rect) return;
+      var menuH = slashMenu.offsetHeight || 300;
+      var left = Math.max(8, Math.min(rect.left, window.innerWidth - 272));
+      var top = rect.bottom + 6;
+      if (top + menuH > window.innerHeight - 8) {
+        top = Math.max(8, rect.top - menuH - 6);
+      }
+      slashMenu.style.left = left + 'px';
+      slashMenu.style.top = top + 'px';
+    }
+
+    function updateSlash() {
+      var state = computeSlash();
+      if (!state) {
+        hideSlash();
+        return;
+      }
+      slashState = state;
+      renderSlash(state);
+    }
+
+    function hideSlash() {
+      slashState = null;
+      slashMenu.style.display = 'none';
+      slashMenu.innerHTML = '';
+    }
+
+    function runSlashCommand(item) {
+      var state = slashState;
+      hideSlash();
+      if (!state) return;
+      var sel = window.getSelection();
+      var range = sel && sel.rangeCount ? sel.getRangeAt(0) : null;
+      // 删除行首到光标的 /query
+      if (range) {
+        var del = document.createRange();
+        del.selectNodeContents(state.block);
+        del.setEnd(range.startContainer, range.startOffset);
+        del.deleteContents();
+        // 光标放回块开头
+        var r2 = document.createRange();
+        var first = state.block.firstChild;
+        if (first && first.nodeType === 3) {
+          r2.setStart(first, 0);
+        } else if (first) {
+          r2.setStart(first, 0);
+        } else {
+          r2.selectNodeContents(state.block);
+        }
+        r2.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(r2);
+      }
+      slashAction(item.id)();
+    }
+
+    function bindSlash() {
+      if (slashBound || !ready) return;
+      var editor = vditor.vditor.wysiwyg.element;
+      if (!editor) return;
+      slashBound = true;
+
+      editor.addEventListener('input', function (e) {
+        if (e.isComposing) return;
+        clearTimeout(slashTimer);
+        slashTimer = setTimeout(updateSlash, 40);
+      });
+
+      // capture 阶段优先处理 Enter/方向键，避免与 Vditor 内部键位冲突
+      editor.addEventListener('keydown', function (e) {
+        if (e.isComposing || !slashState || !slashState.items || slashState.items.length === 0) return;
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          e.stopPropagation();
+          runSlashCommand(slashState.items[0]);
+        } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          e.stopPropagation();
+          var n = slashState.items.length;
+          slashState.sel = e.key === 'ArrowDown'
+            ? (slashState.sel + 1) % n
+            : (slashState.sel - 1 + n) % n;
+          slashMenu.querySelectorAll('.marknote-slash__item').forEach(function (el, i) {
+            el.classList.toggle('marknote-slash__item--active', i === slashState.sel);
+          });
+        } else if (e.key === 'Escape') {
+          hideSlash();
+        }
+      }, true);
+
+      document.addEventListener('selectionchange', function () {
+        clearTimeout(slashTimer);
+        slashTimer = setTimeout(updateSlash, 160);
+      });
+
+      document.addEventListener('pointerdown', function (e) {
+        if (slashMenu.contains(e.target)) return;
+        if (slashState) hideSlash();
+      });
+    }
+
+    // ---------- Vditor 初始化 ----------
+
+    var options = {
+      mode: 'wysiwyg',
+      lang: LANG,
+      i18n: window.VditorI18n,
+      cdn: 'file:///android_asset/vditor',
+      value: '',
+      _lutePath: 'lute/lute.min.js',
+      placeholder: UI.placeholder,
+      height: '100%',
+      cache: { enable: false },
+      undoDelay: 200,
+      icon: '',
+      toolbar: [
+        'undo', 'redo', '|',
+        'headings', 'bold', 'italic', 'strike', '|',
+        'inline-code', 'code', 'quote', 'list', 'ordered-list', 'check',
+        'line', 'link', 'table'
+      ],
+      toolbarConfig: { hide: true },
+      customWysiwygToolbar: function () {},
+      preview: {
+        hljs: { enable: false, style: 'github' },
+        theme: { current: 'light', path: 'css' },
+        maxWidth: 640
+      },
+      hint: {
+        delay: 60,
+        emojiPath: 'images/emoji'
+      },
+      input: function (md) {
+        try { Android.onContentChanged(md); } catch (e) {}
+      },
+      after: function () {
+        ready = true;
+        bindSlash();
+        markNoteFixHeight();
+        if (pendingDark) {
+          applyDark(true);
+          pendingDark = false;
+        }
+        try { Android.onReady(); } catch (e) {}
+      }
+    };
+
+    vditor = new Vditor('vditor', options);
+    window.__vditor = vditor;
+
+    function applyDark(dark) {
+      document.documentElement.classList.toggle('dark', dark);
+      vditor.setTheme(dark ? 'dark' : 'classic', dark ? 'dark' : 'light', null, 'css');
+    }
+
+    // ---------- Android -> JS 桥 ----------
+
+    window.setMarkNoteContent = function (md) {
+      if (!ready) return;
+      if (vditor.getValue() !== md) {
+        vditor.setValue(md, true);
+      }
+    };
+
+    window.focusMarkNote = function () {
+      if (ready) vditor.focus();
+    };
+
+    window.setMarkNoteDark = function (dark) {
+      if (!ready) {
+        pendingDark = !!dark;
+        return;
+      }
+      applyDark(!!dark);
+    };
+
+    window.markNoteExec = function (name) {
+      if (!ready) return;
+      var el = vditor.vditor.toolbar.elements[name];
+      if (!el) return;
+      var btn = el.querySelector('button, div');
+      if (!btn) return;
+      // 显式命令不受 Vditor 自动上下文禁用影响（例如光标曾经过代码块后列表按钮未恢复）
+      btn.classList.remove('vditor-menu--disabled');
+      btn.click();
+    };
+
+    window.markNoteHeading = function (level) {
+      if (!ready) return;
+      var el = vditor.vditor.toolbar.elements.headings;
+      if (!el) return;
+      var btn = el.querySelector('button');
+      if (!btn) return;
+      btn.classList.remove('vditor-menu--disabled');
+      btn.click();
+      var panel = el.querySelector('.vditor-hint');
+      if (panel && panel.children[level - 1]) {
+        panel.children[level - 1].classList.remove('vditor-menu--disabled');
+        panel.children[level - 1].click();
+      }
+    };
+
+    window.markNoteInsert = function (md) {
+      if (!ready) return;
+      vditor.insertValue(md);
+    };
+
+    window.markNoteUndo = function () {
+      if (ready) window.markNoteExec('undo');
+    };
+
+    window.markNoteRedo = function () {
+      if (ready) window.markNoteExec('redo');
+    };
+  </script>
+</body>
+</html>
