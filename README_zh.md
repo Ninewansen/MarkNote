@@ -1,6 +1,6 @@
 <div align="center">
 
-# MarkNote（墨记）
+# MarkNote
 
 **一款精致、实时预览的 Android Markdown 编辑器** —— Notion 式所见即所得编辑、Typora 式实时预览、
 本地文件优先、支持 WebDAV 同步和 6 种内置语言。

@@ -1,6 +1,6 @@
 <div align="center">
 
-# MarkNote (墨记)
+# MarkNote
 
 **Ein eleganter Markdown-Editor mit Live-Vorschau für Android** — Notion-artige
 WYSIWYG-Bearbeitung, Typora-artige Vorschau, lokale Dateien, WebDAV-Synchronisierung
